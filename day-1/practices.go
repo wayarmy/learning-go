@@ -61,7 +61,7 @@ func practice01() {
 	c, err := readNumberFromKeyboard("Giá trị của c: ")
 	checkErr(err)
 
-	quadraticEquation2(a, b, c)
+	_, _ = quadraticEquation2(a, b, c)
 }
 
 // Giải bài tập 02
@@ -114,17 +114,21 @@ func practice03() []int {
 quadraticEquation2 giải phương trình bậc 2 với 3 tham số: a, b, c được truyền vào với kiểu dữ liệu float64
 hàm này sẽ trả về kết quả
 */
-func quadraticEquation2(a, b, c float64) {
+func quadraticEquation2(a, b, c float64) (interface{}, interface{}) {
 	delta := (b * b) - (4 * a * c)
 	switch {
 	case delta < 0:
-		sqrt := math.Sqrt(-delta)
-		// x1 := complex(-b/(2*a), math.Sqrt(-delta)/(2*a))
-		// x2 := complex(-b/(2*a), -math.Sqrt(-delta)/(2*a))
-		fmt.Printf("Phương trình có 2 nghiệm ở dạng số phức: (%g + %fi)/%g, (%g - %fi)/%g", -b, sqrt, (2 * a), -b, sqrt, (2 * a))
+		x1 := complex(-b/(2*a), math.Sqrt(-delta)/(2*a))
+		x2 := complex(-b/(2*a), -math.Sqrt(-delta)/(2*a))
+		fmt.Printf("Phương trình có 2 nghiệm ở dạng số phức: x1 = %v, x2 = %v", x1, x2)
+		return x1, x2
 	case delta == 0:
 		fmt.Printf("Phương trình có 1 nghiệm duy nhất: %g", (-b / 2 * a))
+		return (-b / 2 * a), (-b / 2 * a)
 	case delta > 0:
 		fmt.Printf("Phương trình có 2 nghiệm: %g, %g", (-b + math.Sqrt(delta)/(2*a)), (-b - math.Sqrt(delta)/(2*a)))
+		return (-b + math.Sqrt(delta)/(2*a)), (-b - math.Sqrt(delta)/(2*a))
 	}
+
+	return nil, nil
 }
