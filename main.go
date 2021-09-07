@@ -8,6 +8,8 @@ import (
 	u "github.com/wayarmy/learning-go/helper"
 )
 
+const current = 2
+
 func main() {
 	day, err := u.ReadNumberFromKeyboard("Muốn tìm kiếm bài tập về nhà của ngày thứ : ")
 	u.CheckErr(err)
@@ -18,7 +20,8 @@ func main() {
 	case int(day) == 2:
 		day2.DoHomeWork()
 	default:
-		fmt.Println("Chỉ chấp nhận 1/2/3, mời chọn lại.!")
+		fmt.Printf("Chỉ mới học đến ngày thứ %d, làm gì đã có bài tập ngày %g, mời chọn lại.! \n", current, day)
+		fmt.Println("")
 		main()
 	}
 }
