@@ -7,6 +7,7 @@ import (
 
 	"github.com/urfave/cli/v2"
 	"github.com/wayarmy/learning-go/day3"
+	"github.com/wayarmy/learning-go/day5"
 )
 
 const current = 2
@@ -38,6 +39,12 @@ func main() {
 				Aliases:     []string{"3"},
 				Usage:       "các hàm tiện ích để tương tác với Elastic Search",
 				Subcommands: day3.Commands(),
+			},
+			{
+				Name:        "day5",
+				Aliases:     []string{"3"},
+				Usage:       "các hàm tiện ích để tương tác với Elastic Search",
+				Subcommands: day5.Commands(),
 			},
 		},
 	}
